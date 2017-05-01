@@ -53,7 +53,12 @@ endfunction
 " Public Interface: {{{1
 
 function! DiffLine(...)
-  call s:init_diffline_tab(s:getlines(a:0 ? a:1 : '\s\+'))
+  if &diff
+    silent call s:init_diffline_tab(s:getlines(a:0 ? a:1 : '\s\+'))
+  else
+    echohl  Error
+    echomsg "Not in a diff session!"
+  endif
 endfunction
 
 function! DiffLineClose()
