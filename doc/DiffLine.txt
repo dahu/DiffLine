@@ -1,0 +1,90 @@
+*DiffLine.txt*	Diff the differences on Just This Line
+
+
+			VIM REFERENCE MANUAL	by Barry Arthur
+
+
+Help on using DiffLine                                    *DiffLine*
+
+1. Introduction				|DiffLine-intro|
+2. Commands				|DiffLine-commands|
+3. Maps					|DiffLine-maps|
+4. Functions				|DiffLine-functions|
+
+==============================================================================
+ 1. INTRODUCTION                                          *DiffLine-intro*
+
+DiffLine is a Vim plugin for zooming in on the differences within a
+single line of a diff session. Typically this would be used on 'very'
+long lines where the differences might not even appear on screen.
+
+DiffLine is intended to be called from within an existing |vimdiff|
+session, with two windows open to differing versions of a file and the
+cursor in each window on the common line of interest.
+
+NOTE: This will be the case in a typical |vimdiff| or |diffthis| setup after
+you've navigated to the line/diff/change of interest.
+
+==============================================================================
+ 2. COMMANDS                                              *DiffLine-commands*
+
+|:DiffLine| [split-pattern]	Diff the current line in a new tab.
+|:DiffLineClose|		Close a DiffLine tab.
+
+                                                          *:DiffLine*
+
+NOTE: The |:DiffLine| command is intended to be run from within an existing
+|vimdiff| session with two windows showing differences between two files.
+
+|:DiffLine| will open a new tab with two windows showing the differences of the
+original line (from both files) after being split with the user-provided pattern
+(whitespace by default).
+
+                                                          *:DiffLineClose*
+
+|:DiffLineClose| will close the DiffLine tab, deleting its associated temporary
+files.
+
+NOTE: You should call |:DiffLineClose| instead of manually closing the tabe with
+|:tabclose| to ensure that the associated temporary files are deleted.
+
+==============================================================================
+ 3. MAPS                                                  *DiffLine-maps*
+
+    Plug			    Default Map
+-----------------------------------------------------------
+|<plug>DiffLine|		<leader>dll
+|<plug>DiffLineClose|		<leader>dlc
+
+                                                          *<plug>DiffLine*
+
+To provide your own mapping for this plug, add to your vimrc a a line like:>
+  nmap <unique><silent> <leader>dl <plug>DiffLine
+<
+
+                                                          *<plug>DiffLineClose*
+
+To provide your own mapping for this plug, add to your vimrc a a line like:>
+  nmap <unique><silent> <leader>dc <plug>DiffLineClose
+<
+
+==============================================================================
+ 4. FUNCTIONS                                             *DiffLine-functions*
+
+|DiffLine()|
+|DiffLineClose()|
+
+                                                          *DiffLine()*
+
+`DiffLine( split-pattern = '\s\+' )` will open a new tab with two windows
+showing the differences of the original line (from both files) after being split
+with the optional user-provided pattern (whitespace by default).
+
+                                                          *DiffLineClose()*
+
+`DiffLineClose()` will close the DiffLine tab, deleting its associated temporary
+files.
+
+
+Template From: https://github.com/dahu/Area-41/
+ vim:tw=78:ts=8:ft=help:norl:

@@ -1,0 +1,42 @@
+DiffLine
+--------
+
+__Diff the Diffs on Just This Line__
+
+DiffLine is a Vim plugin for zooming in on the differences within a
+single line of a diff session. Typically this would be used on _very_
+long lines where the differences might not even appear on screen.
+
+DiffLine is intended to be called from within an existing vimdiff
+session, with two windows open to differing versions of a file and the
+cursor in each window on the common line of interest. NOTE: This will be
+the case in a typical `vimdiff` or `diffthis` setup after you've
+navigated to the line/diff/change of interest.
+
+=== Commands
+
+`:DiffLine [split-pattern]` :: Opens a new tab containing a side-by-side
+                               diff view of the source line split
+                               according to the optional
+                               `split-pattern`, which is _whitespace_ by
+                               default.
+
+\:DiffLineClose` :: Closes a DiffLine tab. Use this command instead of
+                    manually closing the tab with `:tabclose` because
+                    DiffLine uses temporary files which should be
+                    deleted on close.
+
+=== Maps
+
+The following normal mode maps are provided by default and can be
+overridden with the corresponding plug maps.
+
+* `<leader>dll` (<plug>diffline) calls `:DiffLine` with the default _whitespace_ split-pattern.
+* `<leader>dlc` (<plug>difflineclose) calls `:DiffLineClose`
+
+=== Functions
+
+The following function forms are also available:
+
+* ``DiffLine( split-pattern = '\s\+' )``
+* ``DiffLineClose()``
