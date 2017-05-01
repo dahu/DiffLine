@@ -21,7 +21,7 @@ navigated to the line/diff/change of interest.
                                `split-pattern`, which is _whitespace_ by
                                default.
 
-\:DiffLineClose` :: Closes a DiffLine tab. Use this command instead of
+`:DiffLineClose` :: Closes a DiffLine tab. Use this command instead of
                     manually closing the tab with `:tabclose` because
                     DiffLine uses temporary files which should be
                     deleted on close.
